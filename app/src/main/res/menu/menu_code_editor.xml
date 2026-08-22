@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_find"
+        android:icon="@drawable/ic_search"
+        android:title="@string/btn_find"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_run_html"
+        android:icon="@drawable/ic_play"
+        android:title="@string/btn_run_html"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_check_circle"
+        android:title="@string/btn_save_file"
+        app:showAsAction="always" />
+</menu>

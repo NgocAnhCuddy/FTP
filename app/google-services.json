@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "423970020277",
+    "project_id": "myfile-manager-a194f",
+    "storage_bucket": "myfile-manager-a194f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423970020277:android:24d80ae97d09065dfc57fc",
+        "android_client_info": {
+          "package_name": "com.myfile.ui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423970020277-2acdq145p6lonblltkb6q6ompelepju3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myfile.ui",
+            "certificate_hash": "df02b5b9588461efe811e2095ca5db9f1b5ef8ce"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWYfutCBcdvtc7Jy_DnO74MYSi8d8hQNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/surface">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:titleTextColor="@color/text_primary"
+            app:navigationIcon="@drawable/ic_back" />
+
+        <ImageButton
+            android:id="@+id/btn_more_options"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_more_vert"
+            android:contentDescription="@string/btn_more_options" />
+
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_search"
+            android:contentDescription="@string/btn_search" />
+
+        <ImageButton
+            android:id="@+id/btn_toggle_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="96dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_folder"
+            android:visibility="gone"
+            android:contentDescription="@string/view_grid" />
+
+        <!-- Nút "Thoát" dạng chữ, thay cho icon back, chỉ hiện khi đang ở chế độ chọn nhiều
+             mục — giống Samsung My Files (ảnh mẫu người dùng gửi). -->
+        <TextView
+            android:id="@+id/btn_exit_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="16dp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/btn_exit_selection"
+            android:textColor="@color/primary_dark"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- Thanh tìm kiếm theo tên file/thư mục trong danh sách hiện tại, hiện khi bấm icon kính lúp -->
+    <LinearLayout
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/surface"
+        android:paddingStart="4dp"
+        android:paddingEnd="12dp"
+        android:visibility="gone">
+
+        <ImageButton
+            android:id="@+id/btn_close_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="9dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            android:contentDescription="@string/cancel" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/search_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingVertical="10dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/btn_clear_search"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_clear"
+            android:visibility="gone"
+            android:contentDescription="@string/clear" />
+    </LinearLayout>
+
+    <!-- Header dung lượng: chỉ hiện khi duyệt Bộ nhớ trong/thẻ SD ở thư mục gốc, giống màn hình chính Samsung My Files -->
+    <LinearLayout
+        android:id="@+id/storage_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingVertical="28dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_storage_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            tools:text="Bộ nhớ trong" />
+
+        <TextView
+            android:id="@+id/tv_storage_free"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/text_hint"
+            android:textSize="15sp"
+            tools:text="57,47 GB trống" />
+    </LinearLayout>
+
+    <!-- Thanh đường dẫn + nút lên thư mục cha, chỉ hiện khi duyệt Bộ nhớ trong -->
+    <LinearLayout
+        android:id="@+id/path_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/pastel_blue_50"
+        android:paddingStart="4dp"
+        android:paddingEnd="16dp"
+        android:visibility="gone">
+
+        <ImageButton
+            android:id="@+id/btn_go_up"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="9dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_up"
+            android:contentDescription="@string/btn_go_up" />
+
+        <TextView
+            android:id="@+id/tv_current_path"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="10dp"
+            android:textColor="@color/primary_dark"
+            android:textSize="13sp"
+            android:maxLines="1"
+            android:ellipsize="start"
+            android:text="/" />
+    </LinearLayout>
+
+    <!-- Thanh lọc "Tất cả" + sắp xếp, hiện khi duyệt danh sách dạng list (không phải lưới Ảnh/Video) -->
+    <LinearLayout
+        android:id="@+id/filter_sort_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/btn_filter_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="6dp">
+
+            <TextView
+                android:id="@+id/tv_filter_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                tools:text="Tất cả" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="2dp"
+                android:src="@drawable/ic_arrow_up"
+                android:rotation="180"
+                app:tint="@color/text_hint"
+                android:contentDescription="@null" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/btn_sort_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="6dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/ic_sort"
+                app:tint="@color/text_hint"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:id="@+id/tv_sort_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                tools:text="Tên" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="18dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/text_hint" />
+
+        <ImageButton
+            android:id="@+id/btn_sort_direction"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_up"
+            android:contentDescription="@string/menu_sort" />
+    </LinearLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_files"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutAnimation="@anim/layout_animation_fall_down"
+                android:paddingHorizontal="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="88dp"
+                android:clipToPadding="false" />
+            <!--
+                paddingBottom=88dp + clipToPadding=false: FAB "+" (56dp + margin 20dp) nổi cố định
+                ở góc dưới-phải, đè lên nút 3 chấm của dòng/ô CUỐI CÙNG trong danh sách khiến không
+                bấm được (bug người dùng báo). Thêm khoảng đệm dưới bằng đúng vùng FAB chiếm chỗ
+                để item cuối luôn cuộn lên khỏi vùng đó; clipToPadding=false để phần đệm này chỉ là
+                khoảng trống khi cuộn tới cuối, không bị cắt nội dung khi cuộn ở giữa danh sách.
+            -->
+
+            <TextView
+                android:id="@+id/tv_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/empty_folder"
+                android:textColor="@color/text_hint"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/layout_permission_needed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="32dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:src="@drawable/ic_cat_photo"
+                    android:alpha="0.5"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    android:id="@+id/tv_permission_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="@string/permission_needed_message"
+                    android:textColor="@color/text_hint"
+                    android:textSize="14sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_grant_permission"
+                    style="@style/App.Button.Primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/btn_grant_permission" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="20dp"
+                android:src="@drawable/ic_add"
+                android:contentDescription="@string/btn_create_new"
+                android:visibility="gone"
+                app:backgroundTint="@color/primary"
+                app:tint="@color/white" />
+        </FrameLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Thanh hành động khi đang chọn nhiều mục: cuộn ngang để chứa đủ 6 nút giống Samsung My Files -->
+    <HorizontalScrollView
+        android:id="@+id/selection_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/surface"
+        android:scrollbars="none"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="10dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_move_selected"
+                style="@style/App.Button.Outlined"
+                android:layout_width="96dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="6dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingHorizontal="4dp"
+                android:text="@string/btn_move_to"
+                android:textSize="11sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_copy_selected"
+                style="@style/App.Button.Outlined"
+                android:layout_width="96dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="6dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingHorizontal="4dp"
+                android:text="@string/btn_copy_to"
+                android:textSize="11sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_bookmark_selected"
+                style="@style/App.Button.Outlined"
+                android:layout_width="96dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="6dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingHorizontal="4dp"
+                android:text="@string/btn_add_bookmark"
+                android:textSize="11sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_compress_selected"
+                style="@style/App.Button.Outlined"
+                android:layout_width="96dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="6dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingHorizontal="4dp"
+                android:text="@string/btn_compress"
+                android:textSize="11sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_batch_rename_selected"
+                style="@style/App.Button.Outlined"
+                android:layout_width="96dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="6dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingHorizontal="4dp"
+                android:text="@string/btn_batch_rename"
+                android:textSize="11sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_share_selected"
+                style="@style/App.Button.Outlined"
+                android:layout_width="96dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="6dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingHorizontal="4dp"
+                android:text="@string/btn_share"
+                android:textSize="11sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_delete_selected"
+                style="@style/App.Button.Primary"
+                android:layout_width="96dp"
+                android:layout_height="48dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingHorizontal="4dp"
+                android:text="@string/btn_delete"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

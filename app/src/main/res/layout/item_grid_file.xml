@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="1.5dp"
+    android:background="@color/card_surface"
+    android:foreground="?attr/selectableItemBackground">
+    <!--
+        BUG THẬT SỰ (đã sửa trong LocalGridAdapter.onCreateViewHolder, KHÔNG phải ở XML này):
+        root này là con TRỰC TIẾP của RecyclerView (GridLayoutManager), dùng RecyclerView.LayoutParams
+        — attribute app:layout_constraintDimensionRatio chỉ có nghĩa khi 1 view là con của
+        ConstraintLayout CHA, nên đặt trên chính root ConstraintLayout này bị bỏ qua lặng lẽ.
+        Kết quả: layout_height="0dp" từng bị hiểu là 0px thật → mọi ô lưới cao 0, màn hình
+        Ảnh/Video (mặc định mở lưới) hiện toàn đen dù dữ liệu đã tải xong.
+        Sửa đúng: tính cạnh ô vuông = bề rộng RecyclerView / số cột NGAY TRONG CODE rồi gán
+        thẳng vào layoutParams.height, không dựa vào ratio khai báo trong XML nữa.
+    -->
+
+    <ImageView
+        android:id="@+id/iv_thumb"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@drawable/ic_cat_photo" />
+
+    <!-- Nhãn thời lượng cho video, góc dưới phải -->
+    <TextView
+        android:id="@+id/tv_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="#99000000"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="1dp"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="02:15"
+        tools:visibility="visible" />
+
+    <!-- Icon play cho video, giữa ô -->
+    <ImageView
+        android:id="@+id/iv_play_badge"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_play"
+        android:visibility="gone"
+        android:contentDescription="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible" />
+
+    <!-- Chọn nhiều -->
+    <ImageView
+        android:id="@+id/iv_selected_check"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="4dp"
+        android:src="@drawable/ic_check_circle"
+        android:visibility="gone"
+        android:contentDescription="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

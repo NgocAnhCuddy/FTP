@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_reload"
+        android:icon="@drawable/ic_reload"
+        android:title="@string/btn_reload"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_console"
+        android:icon="@drawable/ic_console"
+        android:title="@string/btn_open_console"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_edit_source"
+        android:icon="@drawable/ic_edit"
+        android:title="@string/btn_view_source"
+        app:showAsAction="never" />
+</menu>

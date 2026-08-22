@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyFile Manager</string>
+
+    <!-- Tabs / điều hướng -->
+    <string name="tab_server">Máy chủ FTP</string>
+    <string name="tab_client">Kết nối FTP</string>
+    <string name="tab_cloud">Đám mây</string>
+    <string name="tab_settings">Cài đặt</string>
+
+    <!-- Server -->
+    <string name="title_server">Máy chủ FTP</string>
+    <string name="server_status_running">Đang chạy</string>
+    <string name="server_status_stopped">Đã dừng</string>
+    <string name="btn_start_server">Bật máy chủ</string>
+    <string name="btn_stop_server">Tắt máy chủ</string>
+    <string name="label_address">Địa chỉ kết nối</string>
+    <string name="label_port">Cổng</string>
+    <string name="label_root_folder">Thư mục gốc</string>
+    <string name="label_users">Người dùng</string>
+    <string name="btn_add_user">Thêm người dùng</string>
+    <string name="btn_scan_qr">Hiện mã QR để kết nối nhanh</string>
+    <string name="title_qr_code">Mã QR kết nối</string>
+    <string name="qr_scan_instruction">Dùng máy khác quét mã này để tự động điền thông tin kết nối FTP</string>
+    <string name="qr_start_server_first">Hãy bật máy chủ trước khi tạo mã QR</string>
+    <string name="btn_share_qr">Chia sẻ mã QR</string>
+    <string name="hint_username">Tên đăng nhập</string>
+    <string name="hint_password">Mật khẩu</string>
+    <string name="hint_folder">Thư mục</string>
+    <string name="permission_readonly">Chỉ đọc</string>
+    <string name="permission_readwrite">Đọc và ghi</string>
+    <string name="title_logs">Nhật ký hoạt động</string>
+    <string name="empty_logs">Chưa có hoạt động nào</string>
+    <string name="notif_channel_name">Máy chủ FTP</string>
+    <string name="notif_server_running">Máy chủ FTP đang chạy</string>
+    <string name="notif_sftp_running">Máy chủ SFTP đang chạy</string>
+    <string name="notif_tap_to_open">Chạm để mở ứng dụng</string>
+
+    <!-- SFTP Server -->
+    <string name="notif_stream_channel_name">Phát lên TV/mạng LAN</string>
+    <string name="notif_stream_running">Đang phát qua mạng LAN</string>
+
+    <string name="title_cast_to_tv">Phát lên TV</string>
+    <string name="cast_link_label">Liên kết phát (mở bằng trình duyệt hoặc VLC)</string>
+    <string name="cast_scan_devices">Tìm thiết bị DLNA trong mạng</string>
+    <string name="cast_scanning">Đang dò tìm TV/loa…</string>
+    <string name="cast_no_devices">Không tìm thấy thiết bị nào hỗ trợ DLNA trong mạng</string>
+    <string name="cast_send_to_device">Gửi tới %1$s</string>
+    <string name="cast_sent_success">Đã gửi tới %1$s, kiểm tra TV để xem</string>
+    <string name="cast_sent_failed">Gửi thất bại, thử lại hoặc kiểm tra TV có cùng mạng WiFi không</string>
+    <string name="cast_copy_link">Sao chép liên kết</string>
+    <string name="cast_link_copied">Đã sao chép liên kết</string>
+
+    <string name="title_media_server">Máy chủ Media (chia sẻ lên TV)</string>
+    <string name="desc_media_server">Bật để TV tự tìm thấy điện thoại trong danh sách nguồn (DLNA), hoặc mở liên kết bên dưới bằng trình duyệt trên TV/laptop để duyệt và phát trực tiếp — không cần cài app.</string>
+    <string name="btn_start_media_server">Bật chia sẻ lên TV</string>
+    <string name="btn_stop_media_server">Tắt chia sẻ lên TV</string>
+    <string name="media_server_running">Đang chia sẻ — TV có thể tự tìm thấy qua DLNA</string>
+    <string name="media_server_stopped">Chưa bật</string>
+    <string name="media_link_copied">Đã sao chép liên kết duyệt file</string>
+    <string name="media_start_server_first">Hãy bật chia sẻ lên TV trước</string>
+
+    <string name="title_renderer">Nhận phát từ thiết bị khác</string>
+    <string name="desc_renderer">Bật để điện thoại/TV/loa khác trong mạng có thể chọn \"MyFile Manager\" làm nơi phát (giống BubbleUPnP) — nhận lệnh Play/Pause/Volume và tự phát file nhận được.</string>
+    <string name="btn_start_renderer">Bật nhận phát</string>
+    <string name="btn_stop_renderer">Tắt nhận phát</string>
+    <string name="renderer_running">Đang sẵn sàng nhận phát từ thiết bị khác</string>
+    <string name="renderer_stopped">Chưa bật</string>
+    <string name="notif_renderer_channel_name">Nhận phát từ thiết bị khác (DLNA Renderer)</string>
+    <string name="notif_renderer_running">Sẵn sàng nhận phát — thiết bị khác có thể \"Phát tới\" MyFile Manager</string>
+    <string name="notif_renderer_playing">Đang phát media từ thiết bị khác</string>
+
+    <string name="title_remote_servers">Duyệt máy chủ DLNA khác</string>
+    <string name="remote_scan_devices">Tìm máy chủ media trong mạng</string>
+    <string name="remote_scanning">Đang dò máy chủ DLNA…</string>
+    <string name="remote_no_servers">Không tìm thấy máy chủ media nào trong mạng</string>
+    <string name="remote_empty_folder">Thư mục trống</string>
+    <string name="remote_browse_failed">Không duyệt được máy chủ này — kiểm tra cùng mạng WiFi</string>
+    <string name="remote_open_failed">Không mở được file này</string>
+
+    <string name="title_audio_player">Đang phát</string>
+    <string name="audio_previous">Bài trước</string>
+    <string name="audio_play_pause">Phát/Tạm dừng</string>
+    <string name="audio_next">Bài tiếp theo</string>
+    <string name="audio_rewind_10">Tua lùi 10 giây</string>
+    <string name="audio_forward_10">Tua tới 10 giây</string>
+    <string name="audio_speed_1x">Tốc độ 1x</string>
+    <string name="audio_repeat_ab">Lặp A-B</string>
+    <string name="audio_repeat_ab_set_a">Đã đặt điểm A</string>
+    <string name="audio_repeat_ab_set_b">Đang lặp A-B</string>
+    <string name="audio_repeat_ab_cleared">Đã tắt lặp A-B</string>
+    <string name="audio_repeat_track">Lặp lại bài này</string>
+    <string name="zoom_out">Thu nhỏ</string>
+    <string name="zoom_in">Phóng to</string>
+
+    <!-- Client -->
+    <string name="title_ftp_client">Kết nối FTP</string>
+    <string name="hint_host">Địa chỉ máy chủ (VD: 192.168.1.10)</string>
+    <string name="hint_port">Cổng (mặc định 21)</string>
+    <string name="btn_connect">Kết nối</string>
+    <string name="hint_smb_share">Tên thư mục chia sẻ (share)</string>
+    <string name="hint_smb_domain">Domain (bỏ trống nếu không dùng)</string>
+    <string name="btn_scan_lan">Dò tìm máy chủ trong mạng LAN</string>
+    <string name="scanning_lan">Đang dò tìm thiết bị trong mạng…</string>
+    <string name="no_lan_devices_found">Không tìm thấy máy chủ nào trong mạng</string>
+    <string name="title_lan_scan">Chọn máy chủ</string>
+    <string name="btn_scan_qr_connect">Quét mã QR</string>
+    <string name="title_qr_scanner">Quét mã QR</string>
+    <string name="qr_scanner_instruction">Đưa camera vào mã QR hiển thị trên máy chủ</string>
+    <string name="qr_invalid_format">Mã QR không đúng định dạng kết nối FTP/SFTP/SMB</string>
+    <string name="qr_scan_success">Đã đọc mã QR, đang điền thông tin kết nối…</string>
+    <string name="camera_permission_required">Cần cấp quyền camera để quét mã QR</string>
+    <string name="btn_grant_camera">Cấp quyền camera</string>
+    <string name="btn_disconnect">Ngắt kết nối</string>
+    <string name="saved_connections">Kết nối đã lưu</string>
+    <string name="no_saved_connections">Chưa có kết nối nào được lưu</string>
+    <string name="title_file_browser">Quản lý tệp</string>
+    <string name="btn_upload">Tải lên</string>
+    <string name="btn_download">Tải xuống</string>
+    <string name="btn_delete">Xóa</string>
+    <string name="btn_rename">Đổi tên</string>
+    <string name="btn_details">Chi tiết</string>
+    <string name="btn_open_with">Mở bằng</string>
+    <string name="btn_preview_archive">Xem trước</string>
+    <string name="file_details_format">Tên: %1$s\nĐường dẫn: %2$s\nDung lượng: %3$s\nSửa đổi: %4$s</string>
+    <string name="archive_entry_count">%1$d mục trong file nén</string>
+    <string name="select_all">Tất cả</string>
+    <string name="selected_count">Đã chọn %1$d</string>
+    <string name="select_at_least_one">Hãy chọn ít nhất 1 mục để giải nén</string>
+    <string name="btn_exit">Thoát</string>
+    <string name="btn_new_folder">Thư mục mới</string>
+    <string name="btn_create_menu">Tạo mới</string>
+    <string name="empty_folder">Thư mục trống</string>
+    <string name="connecting">Đang kết nối…</string>
+    <string name="connect_failed">Kết nối thất bại</string>
+
+    <!-- Cloud -->
+    <string name="title_cloud_browser">Duyệt tệp đám mây</string>
+    <string name="cloud_google_drive">Google Drive</string>
+    <string name="cloud_dropbox">Dropbox</string>
+    <string name="cloud_box">Box</string>
+    <string name="btn_link_account">Liên kết tài khoản</string>
+    <string name="btn_unlink_account">Hủy liên kết</string>
+    <string name="account_linked">Đã liên kết</string>
+    <string name="account_not_linked">Chưa liên kết</string>
+    <string name="cloud_link_failed">Liên kết tài khoản thất bại. Vui lòng thử lại hoặc kiểm tra cấu hình ứng dụng.</string>
+
+    <!-- Chung -->
+    <string name="ok">Đồng ý</string>
+    <string name="cancel">Hủy</string>
+    <string name="save">Lưu</string>
+    <string name="delete">Xóa</string>
+    <string name="error_generic">Đã có lỗi xảy ra</string>
+    <string name="permission_required">Cần cấp quyền truy cập bộ nhớ để tiếp tục</string>
+    <string name="grant_permission">Cấp quyền</string>
+
+    <!-- Màn hình Home kiểu My Files -->
+    <string name="home_recent_files">File gần đây</string>
+    <string name="home_categories">Thể loại</string>
+    <string name="home_storage">Lưu trữ</string>
+    <string name="home_utilities">Tiện ích</string>
+    <string name="home_category_photo">Ảnh</string>
+    <string name="home_category_video">Video</string>
+    <string name="home_category_audio">File âm thanh</string>
+    <string name="home_category_doc">Tài liệu</string>
+    <string name="home_category_download">Lượt tải về</string>
+    <string name="home_category_apk">Các file cài đặt</string>
+    <string name="home_internal_storage">Bộ nhớ trong</string>
+    <string name="home_sdcard">Thẻ nhớ SD</string>
+    <string name="sdcard_not_found">Không tìm thấy thẻ nhớ SD trên thiết bị này</string>
+    <string name="sdcard_permission_title">Cần cấp quyền truy cập thẻ SD</string>
+    <string name="sdcard_permission_message">Để tạo/sửa file trên thẻ SD, hãy chọn đúng thư mục gốc thẻ SD trong hộp thoại tiếp theo và cấp quyền.</string>
+    <string name="sdcard_grant_access">Cấp quyền</string>
+    <string name="permission_needed_message">Cần cấp quyền truy cập để hiển thị ảnh/video trên thiết bị</string>
+    <string name="btn_grant_permission">Cấp quyền truy cập</string>
+    <string name="action_search">Tìm kiếm</string>
+    <string name="action_more">Thêm tùy chọn</string>
+    <string name="home_network_storage">Lưu trữ mạng</string>
+    <string name="home_network_storage_desc">Máy chủ FTP, kết nối FTP và tài khoản đám mây</string>
+    <string name="home_trash">Thùng rác</string>
+    <string name="home_storage_used">%1$s đã dùng</string>
+    <string name="home_storage_detail">%1$s / %2$s</string>
+    <string name="no_app_to_open">Không tìm thấy ứng dụng để mở file này</string>
+    <string name="open_as_title">Mở dạng</string>
+    <string name="open_as_hint">Không có ứng dụng nào mở được loại file này. Chọn cách mở khác:</string>
+    <string name="open_as_text">Văn bản</string>
+    <string name="open_as_image">Hình ảnh</string>
+    <string name="open_as_audio">Âm thanh</string>
+    <string name="open_as_video">Video</string>
+    <string name="open_as_other">Khác</string>
+    <string name="btn_share">Chia sẻ</string>
+    <string name="btn_copy_clipboard">Sao chép vào bộ nhớ tạm</string>
+    <string name="btn_add_home_screen">Thêm vào Màn hình chờ</string>
+    <string name="copied_to_clipboard">Đã sao chép vào bộ nhớ tạm</string>
+    <string name="copy_clipboard_failed">Không thể sao chép file này</string>
+    <string name="shortcut_added">Đã thêm lối tắt vào Màn hình chờ</string>
+    <string name="shortcut_not_supported">Màn hình chờ không hỗ trợ ghim lối tắt</string>
+    <string name="shortcut_add_failed">Không thể thêm lối tắt</string>
+    <string name="folder_option_internal">Bộ nhớ trong (tất cả)</string>
+    <string name="folder_option_both">Bộ nhớ trong + Thẻ SD (cả hai)</string>
+    <string name="restart_server_hint">Tắt rồi bật lại máy chủ để áp dụng thư mục gốc mới</string>
+    <string name="btn_edit_user">Sửa</string>
+    <string name="title_edit_user">Sửa người dùng</string>
+
+    <!-- Thùng rác -->
+    <string name="title_trash">Thùng rác</string>
+    <string name="empty_trash">Thùng rác trống</string>
+    <string name="btn_restore">Khôi phục</string>
+    <string name="btn_delete_forever">Xóa vĩnh viễn</string>
+    <string name="btn_empty_trash">Dọn sạch thùng rác</string>
+    <string name="confirm_empty_trash">Toàn bộ mục trong thùng rác sẽ bị xóa vĩnh viễn. Bạn có chắc chắn?</string>
+    <string name="confirm_delete_forever">Mục này sẽ bị xóa vĩnh viễn và không thể khôi phục.</string>
+    <string name="moved_to_trash">Đã chuyển vào thùng rác</string>
+    <string name="restored">Đã khôi phục</string>
+
+    <!-- Duyệt Bộ nhớ trong / điều hướng thư mục -->
+    <string name="title_internal_storage">Bộ nhớ trong</string>
+    <string name="items_count">%1$d mục</string>
+    <string name="btn_go_up">Lên thư mục cha</string>
+
+    <!-- Chế độ xem lưới -->
+    <string name="view_grid">Xem dạng lưới</string>
+    <string name="btn_more_options">Thêm tùy chọn</string>
+    <string name="menu_select">Chọn</string>
+    <string name="menu_select_items">Chọn mục</string>
+    <string name="btn_exit_selection">Thoát</string>
+    <string name="menu_view">Xem</string>
+    <string name="menu_create_folder">Tạo thư mục</string>
+    <string name="menu_trash">Thùng rác</string>
+    <string name="menu_view_settings_title">Chế độ xem</string>
+    <string name="storage_free_format">%1$s trống</string>
+    <string name="filter_all">Tất cả</string>
+    <string name="filter_folders">Thư mục</string>
+    <string name="filter_files">Tệp tin</string>
+    <string name="sort_name">Tên</string>
+    <string name="sort_date">Ngày sửa đổi</string>
+    <string name="sort_size">Dung lượng</string>
+    <string name="sort_type">Loại</string>
+    <string name="menu_sort">Sắp xếp</string>
+    <string name="btn_search">Tìm kiếm</string>
+    <string name="search_hint">Tìm kiếm</string>
+    <string name="clear">Xóa</string>
+    <string name="sort_by_name">Tên</string>
+    <string name="sort_by_size">Kích thước</string>
+    <string name="sort_by_date">Ngày sửa đổi</string>
+    <string name="view_list">Xem dạng danh sách</string>
+
+    <!-- Tìm kiếm -->
+    <string name="title_search">Tìm kiếm</string>
+    <string name="hint_search">Tìm file trong Bộ nhớ trong…</string>
+    <string name="empty_search">Không tìm thấy file nào</string>
+    <string name="searching">Đang tìm…</string>
+
+    <!-- Menu 3 chấm ở Home -->
+    <string name="menu_settings">Cài đặt</string>
+    <string name="menu_about">Giới thiệu</string>
+    <string name="title_storage_manager">Quản lý lưu trữ</string>
+    <string name="storage_used_percent">%1$d%% đã dùng</string>
+    <string name="storage_category_other">File khác</string>
+    <string name="storage_category_archive">File đã nén</string>
+    <string name="storage_category_apps">Ứng dụng</string>
+    <string name="storage_category_system">Hệ thống</string>
+    <string name="storage_show_more">Xem thêm</string>
+    <string name="storage_show_less">Hiện ít hơn</string>
+    <string name="storage_action_trash">Thùng rác</string>
+    <string name="storage_action_trash_desc">Các file nằm trong Thùng rác trong các ứng dụng khác nhau</string>
+    <string name="storage_action_unused_apps">Ứng dụng không dùng</string>
+    <string name="storage_action_unused_apps_desc">Các ứng dụng bạn không dùng trong 30 ngày qua</string>
+    <string name="storage_action_duplicate">File trùng lặp</string>
+    <string name="storage_action_duplicate_desc">Các file bạn có nhiều bản sao</string>
+    <string name="storage_action_large">File lớn</string>
+    <string name="storage_action_large_desc">Các file lớn hơn 25 MB</string>
+
+    <!-- File trùng lặp -->
+    <string name="scanning_duplicates">Đang quét file trùng lặp…</string>
+    <string name="empty_duplicates">Không tìm thấy file trùng lặp</string>
+    <string name="duplicate_summary_format">%1$d nhóm • có thể giải phóng %2$s</string>
+    <string name="keep_one_delete_rest">Giữ 1, xóa hết</string>
+    <string name="btn_delete_selected">Xóa mục đã chọn</string>
+    <string name="btn_delete_selected_count">Xóa %1$d mục đã chọn</string>
+    <string name="confirm_delete_count">Xóa %1$d file đã chọn? File sẽ được chuyển vào thùng rác.</string>
+
+    <!-- Ứng dụng không dùng -->
+    <string name="unused_apps_permission_rationale">Cần quyền truy cập dữ liệu sử dụng để biết ứng dụng nào lâu không mở</string>
+    <string name="empty_unused_apps">Không có ứng dụng nào lâu không dùng</string>
+    <string name="btn_uninstall">Gỡ cài đặt</string>
+
+    <!-- File lớn -->
+    <string name="empty_large_files">Không tìm thấy file lớn hơn 25 MB</string>
+
+    <!-- Tạo file/thư mục mới -->
+    <string name="btn_create_new">Tạo mới</string>
+    <string name="create_new_folder">Thư mục mới</string>
+    <string name="create_new_textfile">File văn bản (.txt)</string>
+    <string name="create_new_file">File tùy chỉnh…</string>
+    <string name="hint_file_name">Tên file/thư mục</string>
+    <string name="hint_file_name_custom">Tên file (VD: ghi_chu.md, data.json)</string>
+    <string name="created_success">Đã tạo thành công</string>
+    <string name="error_file_exists">File/thư mục đã tồn tại</string>
+
+    <!-- Nén / giải nén -->
+    <string name="btn_compress">Nén thành .zip</string>
+    <string name="btn_batch_rename">Đổi tên hàng loạt</string>
+    <string name="title_batch_rename">Đổi tên %1$d mục đã chọn</string>
+    <string name="batch_rename_mode_number">Đánh số thứ tự</string>
+    <string name="batch_rename_mode_find_replace">Tìm và thay thế</string>
+    <string name="batch_rename_mode_prefix_suffix">Thêm tiền tố / hậu tố</string>
+    <string name="hint_batch_rename_base_name">Tên gốc (vd: Ảnh)</string>
+    <string name="hint_batch_rename_start_number">Số bắt đầu</string>
+    <string name="hint_batch_rename_find">Tìm</string>
+    <string name="hint_batch_rename_replace">Thay bằng</string>
+    <string name="hint_batch_rename_prefix">Tiền tố (thêm vào đầu tên)</string>
+    <string name="hint_batch_rename_suffix">Hậu tố (thêm vào cuối tên, trước phần mở rộng)</string>
+    <string name="batch_rename_preview_title">Xem trước</string>
+    <string name="batch_rename_success">Đã đổi tên %1$d mục</string>
+    <string name="batch_rename_failed_some">Đổi tên xong %1$d mục, %2$d mục lỗi (trùng tên)</string>
+    <string name="batch_rename_no_change">Chưa có thay đổi nào để áp dụng</string>
+    <string name="btn_extract">Giải nén</string>
+    <string name="compressing">Đang nén…</string>
+    <string name="extracting">Đang giải nén…</string>
+    <string name="compress_success">Đã nén xong</string>
+    <string name="extract_success">Đã giải nén xong</string>
+    <string name="compress_failed">Nén thất bại</string>
+    <string name="extract_failed">Giải nén thất bại</string>
+    <string name="hint_archive_name">Tên file nén</string>
+    <string name="hint_archive_password">Nhập mật khẩu</string>
+    <string name="title_archive_password_protected">File nén có mật khẩu</string>
+    <string name="msg_archive_password_protected">"%1$s được bảo vệ bằng mật khẩu. Nhập mật khẩu để giải nén."</string>
+    <string name="error_wrong_archive_password">Mật khẩu không đúng, vui lòng thử lại</string>
+    <string name="extract">Giải nén</string>
+    <string name="checkbox_protect_with_password">Bảo vệ bằng mật khẩu</string>
+    <string name="app_lock_enter_pin">Nhập mã PIN</string>
+    <string name="app_lock_create_pin">Tạo mã PIN mới</string>
+    <string name="app_lock_confirm_pin">Nhập lại mã PIN</string>
+    <string name="app_lock_wrong_pin">Mã PIN không đúng</string>
+    <string name="app_lock_pin_mismatch">Mã PIN không khớp, thử lại</string>
+    <string name="app_lock_pin_created">Đã tạo mã PIN thành công</string>
+    <string name="app_lock_biometric_prompt_title">Xác thực để mở MyFile Manager</string>
+    <string name="app_lock_biometric_prompt_subtitle">Dùng vân tay hoặc khuôn mặt đã đăng ký</string>
+    <string name="setting_app_lock">Khoá app</string>
+    <string name="setting_app_lock_desc">Yêu cầu mã PIN hoặc vân tay mỗi khi mở app</string>
+    <string name="setting_app_lock_change_pin">Đổi mã PIN</string>
+    <string name="setting_app_lock_use_biometric">Cho phép dùng vân tay / khuôn mặt</string>
+    <string name="app_lock_disable_confirm_title">Tắt khoá app?</string>
+    <string name="app_lock_disable_confirm_msg">Nhập mã PIN hiện tại để tắt tính năng khoá app.</string>
+    <string name="btn_hide">Ẩn</string>
+    <string name="btn_unhide">Bỏ ẩn</string>
+    <string name="msg_file_hidden">Đã ẩn — bật \"Hiện file ẩn\" trong Cài đặt để xem lại</string>
+    <string name="msg_file_unhidden">Đã bỏ ẩn</string>
+    <string name="setting_show_hidden_files">Hiện file ẩn</string>
+    <string name="setting_show_hidden_files_desc">Hiển thị các file/thư mục đã ẩn (tên bắt đầu bằng dấu chấm)</string>
+    <string name="btn_add_bookmark">Ghim thư mục</string>
+    <string name="btn_remove_bookmark">Bỏ ghim</string>
+    <string name="msg_bookmark_added">Đã ghim thư mục</string>
+    <string name="msg_bookmark_removed">Đã bỏ ghim</string>
+    <string name="category_bookmarks">Thư mục đã ghim</string>
+    <string name="empty_bookmarks">Chưa có thư mục nào được ghim.\nNhấn giữ 1 thư mục và chọn \"Ghim thư mục\" để thêm vào đây.</string>
+    <string name="msg_bookmark_folder_missing">Thư mục này không còn tồn tại, đã tự động bỏ ghim</string>
+    <string name="battery_opt_title">Cho phép chạy nền để máy chủ không tự tắt</string>
+    <string name="battery_opt_msg_generic">Điện thoại của bạn có thể tự động tắt máy chủ khi bạn tắt màn hình để tiết kiệm pin. Cho phép MyFile Manager chạy nền để giữ máy chủ hoạt động ổn định.</string>
+    <string name="battery_opt_msg_xiaomi">Trên điện thoại Xiaomi/Redmi/POCO, ngoài bước tiếp theo, bạn cần vào Cài đặt → Ứng dụng → MyFile Manager và bật thêm \"Tự khởi động\" (Autostart) để máy chủ không bị tắt khi tắt màn hình.</string>
+    <string name="battery_opt_btn_allow">Cho phép</string>
+    <string name="battery_opt_btn_skip">Bỏ qua</string>
+    <string name="battery_opt_btn_open_autostart">Mở cài đặt Tự khởi động</string>
+    <string name="progress_compressing">Đang nén…</string>
+    <string name="progress_extracting">Đang giải nén…</string>
+    <string name="progress_copying">Đang sao chép…</string>
+    <string name="progress_moving">Đang di chuyển…</string>
+    <string name="btn_copy_to">Sao chép đến…</string>
+    <string name="btn_move_to">Di chuyển đến…</string>
+    <string name="paste_here">Dán vào đây</string>
+    <string name="paste_copy_here">Sao chép vào đây</string>
+    <string name="paste_move_here">Di chuyển vào đây</string>
+    <string name="paste_items_count">Dán %1$d mục</string>
+    <string name="copy_success">Đã sao chép xong</string>
+    <string name="copy_failed">Sao chép thất bại</string>
+    <string name="move_success">Đã di chuyển xong</string>
+    <string name="move_failed">Di chuyển thất bại</string>
+    <string name="title_folder_picker">Chọn thư mục</string>
+    <string name="network_copy_hint">Sao chép/di chuyển sang Lưu trữ mạng chưa được hỗ trợ trực tiếp ở đây.\nHãy mở mục Lưu trữ mạng và dùng nút Tải lên.</string>
+    <string name="network_no_account_hint">Bạn chưa liên kết tài khoản đám mây nào.\nHãy vào tab Lưu trữ mạng ở màn chính để liên kết Google Drive, Dropbox hoặc Box.</string>
+    <string name="paste_upload_here">Tải lên đây</string>
+    <string name="paste_move_here_cloud">Di chuyển lên đây</string>
+    <string name="progress_uploading">Đang tải lên…</string>
+    <string name="upload_success">Đã tải lên thành công</string>
+    <string name="upload_failed">Tải lên thất bại</string>
+    <string name="select_cloud_account">Chọn tài khoản đám mây</string>
+
+    <!-- Dung lượng tài khoản FTP/Cloud -->
+    <string name="storage_quota_unavailable">Không có thông tin dung lượng</string>
+    <string name="storage_quota_format">%1$s / %2$s đã dùng</string>
+    <string name="ftp_used_estimate">Ước tính đã dùng: %1$s</string>
+    <string name="cloud_used_format">%1$s / %2$s đã dùng</string>
+    <string name="cloud_storage_label">Dung lượng</string>
+    <string name="app_version_info">MyFile Manager\nPhiên bản 1.0\nỨng dụng quản lý file cục bộ, FTP và đám mây.</string>
+
+    <!-- Trình xem HTML local -->
+    <string name="title_html_viewer">Xem trang HTML</string>
+    <string name="html_load_failed">Không thể tải file HTML này</string>
+    <string name="title_pdf_viewer">Xem PDF</string>
+    <string name="pdf_load_failed">Không thể mở file PDF này</string>
+    <string name="title_docx_viewer">Xem DOCX</string>
+    <string name="docx_load_failed">Không thể đọc file DOCX này</string>
+    <string name="title_xlsx_viewer">Xem XLSX</string>
+    <string name="xlsx_load_failed">Không thể đọc file XLSX này</string>
+    <string name="btn_reload">Tải lại</string>
+    <string name="btn_open_console">Bảng điều khiển JS</string>
+    <string name="btn_view_source">Xem mã nguồn</string>
+    <string name="html_console_empty">Chưa có log JavaScript nào</string>
+
+    <!-- Trình soạn thảo mã / Code Editor -->
+    <string name="title_code_editor">Trình soạn thảo mã</string>
+    <string name="btn_run_html">Chạy</string>
+    <string name="btn_save_file">Lưu</string>
+    <string name="btn_find">Tìm kiếm</string>
+    <string name="hint_find">Tìm theo từ hoặc số dòng (VD: 42)</string>
+    <string name="btn_find_next">Tiếp theo</string>
+    <string name="btn_find_prev">Trước đó</string>
+    <string name="find_no_match">Không tìm thấy kết quả phù hợp</string>
+    <string name="find_match_count">%1$d/%2$d kết quả</string>
+    <string name="file_saved">Đã lưu file</string>
+    <string name="file_save_failed">Lưu file thất bại</string>
+    <string name="unsaved_changes_title">File chưa được lưu</string>
+    <string name="unsaved_changes_message">Bạn có thay đổi chưa lưu. Thoát mà không lưu?</string>
+    <string name="btn_discard">Không lưu</string>
+    <string name="editor_line_col">Dòng %1$d, Cột %2$d</string>
+    <string name="menu_open_in_editor">Mở bằng Trình soạn thảo mã</string>
+    <string name="menu_open_html">Chạy file HTML</string>
+    <string name="menu_code_editor_home">Trình soạn thảo mã</string>
+    <string name="menu_html_viewer_home">Chạy file HTML cục bộ</string>
+    <string name="pick_file_to_edit">Chọn 1 file để mở trong trình soạn thảo</string>
+    <string name="pick_html_file">Chọn 1 file HTML để chạy</string>
+
+    <!-- Bảng điều khiển gỡ lỗi (Debug console) nâng cấp -->
+    <string name="debug_console_title">Bảng điều khiển gỡ lỗi</string>
+    <string name="debug_search_hint">Tìm trong nhật ký…</string>
+    <string name="debug_filter_all">Tất cả</string>
+    <string name="debug_filter_info">Thông tin</string>
+    <string name="debug_filter_success">Thành công</string>
+    <string name="debug_filter_warning">Cảnh báo</string>
+    <string name="debug_filter_error">Lỗi</string>
+    <string name="btn_clear_logs">Xóa nhật ký</string>
+    <string name="btn_copy_logs">Sao chép</string>
+    <string name="logs_copied">Đã sao chép nhật ký</string>
+    <string name="debug_no_results">Không có log khớp với bộ lọc/tìm kiếm</string>
+</resources>

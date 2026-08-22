@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="12dp"
+    android:paddingHorizontal="12dp"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Checkbox chọn nhiều: Ô TRÒN RIÊNG BIỆT, đặt tách hẳn bên trái icon file — không đè/che
+         lên icon như cách làm trước đây (dấu tick nhỏ ở góc icon từng khiến icon thư mục bị
+         che 1 phần, ví dụ icon "Documents" trong ảnh mẫu người dùng gửi). Đây đúng theo cách
+         Samsung My Files trình bày: 1 checkbox tròn độc lập ở đầu dòng, icon file/thư mục phía
+         sau LUÔN hiển thị nguyên vẹn 100%, không bao giờ bị vật gì đè lên dù đang ở chế độ chọn
+         hay không. Mặc định GONE khi chưa vào chế độ chọn nhiều (list co lại đúng bằng bề rộng
+         icon, không có khoảng trống thừa bên trái). -->
+    <ImageView
+        android:id="@+id/iv_selected_check"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_check_circle_outline"
+        android:visibility="gone"
+        android:contentDescription="@null"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_file"
+        android:contentDescription="@null" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_file_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:maxLines="1"
+            android:ellipsize="middle"
+            tools:text="baocao_thang8.pdf" />
+
+        <TextView
+            android:id="@+id/tv_file_meta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            tools:text="2.4 MB" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_more"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_more"
+        android:contentDescription="@null" />
+
+</LinearLayout>

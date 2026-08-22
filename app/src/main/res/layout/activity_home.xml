@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+<androidx.core.widget.NestedScrollView
+    android:id="@+id/scroll_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:scrollbars="none"
+    android:overScrollMode="ifContentScrolls">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="96dp">
+
+        <!-- Thanh trên: tiêu đề lớn kiểu OneUI + tìm kiếm + more, đặt gần rìa trên cùng để không chiếm vùng dễ chạm 1 tay -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="4dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/app_name"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                android:textSize="28sp" />
+
+            <ImageButton
+                android:id="@+id/btn_search"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_search"
+                android:contentDescription="@string/action_search" />
+
+            <ImageButton
+                android:id="@+id/btn_more"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="4dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_more_vert"
+                android:contentDescription="@string/action_more" />
+        </LinearLayout>
+
+        <!-- Nhóm card: File gần đây (kiểu OneUI - mỗi nhóm chức năng nằm trong 1 card bo góc riêng) -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/App.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:contentPadding="0dp">
+
+            <!-- QUAN TRỌNG: MaterialCardView (kế thừa FrameLayout) chỉ xếp layer theo Z, KHÔNG tự
+                 xếp chồng các con theo chiều dọc như LinearLayout. Bản trước đặt row_recent/
+                 divider/row_bookmarks làm 3 CON TRỰC TIẾP của CardView -> cả 3 cùng bắt đầu vẽ
+                 từ góc (0,0) của card -> "File gần đây" và "Tệp đã ghim" đè lên nhau y hệt lỗi
+                 chồng chữ trong ảnh chụp. Phải bọc chung 1 LinearLayout dọc như dưới đây. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/row_recent"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_recent"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/home_recent_files"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="56dp"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:id="@+id/row_bookmarks"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_bookmark"
+                    app:tint="@color/text_primary"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/category_bookmarks"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Thể loại -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="10dp"
+            android:text="@string/home_categories"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/App.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:contentPadding="8dp">
+
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            app:columnCount="3"
+            app:rowCount="2">
+
+            <include layout="@layout/item_category" android:id="@+id/cat_photo"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                app:layout_columnWeight="1" app:layout_gravity="fill_horizontal" android:layout_margin="4dp" />
+            <include layout="@layout/item_category" android:id="@+id/cat_video"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                app:layout_columnWeight="1" app:layout_gravity="fill_horizontal" android:layout_margin="4dp" />
+            <include layout="@layout/item_category" android:id="@+id/cat_audio"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                app:layout_columnWeight="1" app:layout_gravity="fill_horizontal" android:layout_margin="4dp" />
+            <include layout="@layout/item_category" android:id="@+id/cat_doc"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                app:layout_columnWeight="1" app:layout_gravity="fill_horizontal" android:layout_margin="4dp" />
+            <include layout="@layout/item_category" android:id="@+id/cat_download"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                app:layout_columnWeight="1" app:layout_gravity="fill_horizontal" android:layout_margin="4dp" />
+            <include layout="@layout/item_category" android:id="@+id/cat_apk"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                app:layout_columnWeight="1" app:layout_gravity="fill_horizontal" android:layout_margin="4dp" />
+
+        </androidx.gridlayout.widget.GridLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Lưu trữ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="10dp"
+            android:text="@string/home_storage"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/App.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:contentPadding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <!-- Bộ nhớ trong: icon + tên + số liệu (dòng 1), thanh dung lượng full-width bên dưới
+             (dòng 2) — đúng kiểu Samsung My Files: track nền xám nhạt + đoạn màu tô theo tỉ lệ
+             % đã dùng, không phải badge "viên thuốc" nhỏ cạnh tên như trước. -->
+        <LinearLayout
+            android:id="@+id/row_internal_storage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:background="?attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_phone_storage"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/home_internal_storage"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp" />
+
+                <com.myfile.ui.widget.StoragePillView
+                    android:id="@+id/storage_pill_internal_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="56dp"
+            android:background="@color/divider" />
+
+        <!-- Thẻ nhớ SD (chỉ hiện nếu thiết bị có gắn thẻ SD tháo rời) — cùng kiểu 2 dòng như trên. -->
+        <LinearLayout
+            android:id="@+id/row_sdcard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:background="?attr/selectableItemBackground"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_sd_card"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/home_sdcard"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp" />
+
+                <com.myfile.ui.widget.StoragePillView
+                    android:id="@+id/storage_pill_sd_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/divider_sdcard"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="56dp"
+            android:background="@color/divider"
+            android:visibility="gone" />
+
+        <!-- Lưu trữ mạng (FTP server/client + cloud) -->
+        <LinearLayout
+            android:id="@+id/row_network_storage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="14dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_network_storage"
+                android:contentDescription="@null" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_network_storage"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_network_storage_desc"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Tiện ích -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="10dp"
+            android:text="@string/home_utilities"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/App.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:contentPadding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/row_trash"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_trash"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:text="@string/home_trash"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="56dp"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:id="@+id/row_storage_manager"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_phone_storage"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:text="@string/title_storage_manager"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
+    <!-- FAB kết nối nhanh: đặt góc dưới-phải, trong tầm ngón cái khi cầm 1 tay,
+         thay vì buộc người dùng với tay lên thanh trên để vào Lưu trữ mạng -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_quick_connect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:text="@string/home_network_storage"
+        app:icon="@drawable/ic_network_storage"
+        app:backgroundTint="@color/primary"
+        app:iconTint="@color/on_primary"
+        android:textColor="@color/on_primary"
+        app:cornerRadius="18dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

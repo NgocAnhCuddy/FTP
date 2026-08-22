@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-path name="external_files" path="." />
+    <external-files-path name="app_external_files" path="." />
+    <cache-path name="cache" path="." />
+    <files-path name="internal_files" path="." />
+    <!--
+        BUG ĐÃ SỬA: trước đây chỉ khai external-path (= Environment.getExternalStorageDirectory(),
+        tức BỘ NHỚ TRONG chính). File nằm ở THẺ NHỚ SD gắn ngoài (VD /storage/1234-5678/DCIM/...)
+        KHÔNG nằm trong gốc đó, nên FileProvider.getUriForFile() ném IllegalArgumentException
+        "Failed to find configured root that contains file" ngay khi mở ảnh trên SD — app crash
+        văng ra màn hình chính ngay lập tức (không phải lỗi decode ảnh). Thêm root-path path="."
+        để phủ toàn bộ hệ thống file (mọi phân vùng gắn ngoài), an toàn vì provider exported=false
+        và chỉ cấp quyền đúng 1 Uri cụ thể lúc mở, không lộ ra app khác.
+    -->
+    <root-path name="root" path="." />
+</paths>

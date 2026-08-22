@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+
+    <!-- Thư mục xanh dương pastel, phẳng, gọn gàng, căn giữa -->
+    <path
+        android:fillColor="#8FC5F5"
+        android:pathData="M32,42c0,-3.87 3.13,-7 7,-7h11.9c2.07,0 4.03,0.91 5.37,2.49L59.6,42.5H69c3.87,0 7,3.13 7,7v22c0,3.87 -3.13,7 -7,7H39c-3.87,0 -7,-3.13 -7,-7Z"/>
+
+</vector>

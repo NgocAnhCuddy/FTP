@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:gravity="center_horizontal">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_lock"
+        app:tint="@color/primary"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/tv_lock_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_lock_enter_pin"
+        android:textSize="17sp"
+        android:textColor="@color/text_primary"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_lock_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textSize="13sp"
+        android:textColor="@color/error"
+        android:visibility="invisible"
+        android:text="@string/app_lock_wrong_pin" />
+
+    <!-- 6 chấm tròn thể hiện số chữ số PIN đã nhập -->
+    <LinearLayout
+        android:id="@+id/dots_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal"
+        android:gravity="center" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Bàn phím số 3x4 giống khoá màn hình điện thoại phổ thông -->
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:columnCount="3"
+        android:rowCount="4">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_num_1" style="@style/App.Button.Numpad" android:text="1" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_num_2" style="@style/App.Button.Numpad" android:text="2" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_num_3" style="@style/App.Button.Numpad" android:text="3" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_num_4" style="@style/App.Button.Numpad" android:text="4" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_num_5" style="@style/App.Button.Numpad" android:text="5" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_num_6" style="@style/App.Button.Numpad" android:text="6" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_num_7" style="@style/App.Button.Numpad" android:text="7" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_num_8" style="@style/App.Button.Numpad" android:text="8" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_num_9" style="@style/App.Button.Numpad" android:text="9" />
+
+        <ImageButton
+            android:id="@+id/btn_biometric"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_fingerprint"
+            app:tint="@color/primary"
+            android:visibility="gone"
+            android:contentDescription="@null" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_num_0" style="@style/App.Button.Numpad" android:text="0" />
+
+        <ImageButton
+            android:id="@+id/btn_backspace"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_backspace"
+            app:tint="@color/text_secondary"
+            android:contentDescription="@null" />
+
+    </GridLayout>
+
+</LinearLayout>

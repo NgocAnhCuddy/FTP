@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!--
+        PlayerView của Media3 thay cho VideoView: tự vẽ thanh tua (seek bar) kèm thời gian
+        đã phát/tổng thời lượng, hỗ trợ buffering state đúng chuẩn (fix lỗi vòng xoay loading
+        vô hạn của VideoView cũ — nguyên nhân là progress bar tự vẽ tay không có nơi ẩn sau
+        khi start() xong). use_controller=false vì bộ điều khiển mặc định không có nút tua
+        15s theo yêu cầu; ta tự vẽ overlay điều khiển riêng bên dưới, chỉ dùng PlayerView để
+        hiển thị khung hình + progress buffering built-in.
+    -->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:use_controller="false"
+        app:resize_mode="fit"
+        app:surface_type="surface_view" />
+
+    <ImageView
+        android:id="@+id/btn_play_overlay"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:background="@drawable/bg_circle_overlay"
+        android:src="@drawable/ic_play"
+        android:contentDescription="@null" />
+
+    <ProgressBar
+        android:id="@+id/video_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <!-- Thanh điều khiển dưới đáy: tua lùi 15s / play-pause / tua tới 15s / seek bar thời gian -->
+    <LinearLayout
+        android:id="@+id/video_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:background="#99000000"
+        android:paddingTop="8dp"
+        android:paddingBottom="12dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <TextView
+                android:id="@+id/tv_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:minWidth="42dp"
+                android:text="00:00"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <SeekBar
+                android:id="@+id/seek_bar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="8dp"
+                android:max="1000" />
+
+            <TextView
+                android:id="@+id/tv_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:minWidth="42dp"
+                android:gravity="end"
+                android:text="00:00"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/btn_rewind_15"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="12dp"
+                android:src="@drawable/ic_replay_15"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@null" />
+
+            <ImageView
+                android:id="@+id/btn_play_pause_small"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginHorizontal="20dp"
+                android:padding="12dp"
+                android:src="@drawable/ic_pause"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@null" />
+
+            <ImageView
+                android:id="@+id/btn_forward_15"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="12dp"
+                android:src="@drawable/ic_forward_15"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@null" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/btn_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="6dp"
+                android:text="@string/audio_speed_1x"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/btn_repeat_ab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="6dp"
+                android:text="@string/audio_repeat_ab"
+                android:textColor="#CCFFFFFF"
+                android:textSize="12sp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <ImageView
+                android:id="@+id/btn_repeat_track"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="4dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_repeat"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/audio_repeat_track" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

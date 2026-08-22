@@ -1,0 +1,12 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <!-- Khớp phong cách outline (không fill, strokeColor theo theme) của ic_phone_storage.xml
+         cạnh nó — trước đây hàng "Thẻ nhớ SD" dùng nhầm ic_network_storage.xml (icon dạng khay/
+         rack ngang, giống hệt icon "Lưu trữ mạng" bên dưới) khiến 2 hàng khác nhau trông như
+         cùng 1 loại lưu trữ. Hình thẻ nhớ SD chuẩn: góc trên-phải cắt vát, dải tiếp điểm dọc. -->
+    <path android:fillColor="#00000000" android:strokeColor="?attr/colorOnSurface" android:strokeWidth="1.8" android:strokeLineJoin="round"
+        android:pathData="M15.5,3H7a1,1 0,0 0,-1 1v16a1,1 0,0 0,1 1h10a1,1 0,0 0,1 -1V7.5Z"/>
+    <path android:fillColor="?attr/colorOnSurface" android:strokeWidth="0"
+        android:pathData="M9,4h1.6v4H9zM11.2,4h1.6v4h-1.6zM13.4,4h1.6v4h-1.6z"/>
+</vector>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tv_crumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="4dp"
+        android:textColor="@color/text_hint"
+        android:textSize="13sp"
+        android:maxLines="1"
+        tools:text="FTP-main-updated.zip" />
+
+    <ImageView
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginHorizontal="2dp"
+        android:src="@drawable/ic_arrow_up"
+        android:rotation="90"
+        app:tint="@color/text_hint"
+        android:contentDescription="@null" />
+
+</LinearLayout>

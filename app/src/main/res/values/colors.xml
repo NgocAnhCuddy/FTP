@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nền -->
+    <color name="background">#FFFFFF</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_alt">#F5F9FF</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Xanh dương pastel - màu chủ đạo -->
+    <color name="pastel_blue_50">#F0F7FF</color>
+    <color name="pastel_blue_100">#E1EFFE</color>
+    <color name="pastel_blue_200">#C3E0FD</color>
+    <color name="pastel_blue_300">#A5CFFB</color>
+    <color name="pastel_blue_400">#87BEF7</color>
+    <color name="pastel_blue_500">#6BAEF2</color>
+    <color name="pastel_blue_600">#5499E8</color>
+    <color name="pastel_blue_700">#3F80D1</color>
+
+    <color name="primary">@color/pastel_blue_500</color>
+    <color name="primary_dark">@color/pastel_blue_700</color>
+    <color name="primary_light">@color/pastel_blue_200</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <color name="outline">@color/pastel_blue_300</color>
+    <color name="outline_variant">@color/pastel_blue_100</color>
+    <color name="outline_strong">@color/pastel_blue_400</color>
+
+    <!-- Trạng thái -->
+    <color name="success">#7FD9A8</color>
+    <color name="warning">#F7C97F</color>
+    <color name="error">#F29999</color>
+    <color name="info">@color/pastel_blue_400</color>
+
+    <!-- Text -->
+    <color name="text_primary">#1F2937</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9CA3AF</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- Cloud brand accents (nhẹ, chỉ để phân biệt icon) -->
+    <color name="brand_gdrive">#6BAEF2</color>
+    <color name="brand_dropbox">#6BAEF2</color>
+    <color name="brand_box">#6BAEF2</color>
+
+    <!-- Màu chấm thể loại kiểu Samsung My Files -->
+    <color name="category_photo">#F06292</color>
+    <color name="category_video">#9C6BF2</color>
+    <color name="category_audio">#7C8CF2</color>
+    <color name="category_doc">#F2A65A</color>
+    <color name="category_download">#6BAEF2</color>
+    <color name="category_apk">#66D19E</color>
+    <color name="category_archive">#3DBE9A</color>
+    <color name="category_other">#5C9DE8</color>
+    <color name="category_trash">#9AA5B1</color>
+    <!-- category_apps/category_system: TÁCH RIÊNG khỏi category_download/category_other.
+         Màn "Quản lý lưu trữ" trước đây dùng chung 2 màu xanh gần giống hệt nhau (#6BAEF2,
+         #5C9DE8) cho "Ứng dụng"+"Hệ thống"+"File khác" — mà 3 mục này thường CHIẾM GẦN HẾT
+         dung lượng đã dùng, nên thanh nhiều màu nhìn như chỉ có 1 màu xanh đơn sắc, các mục
+         Ảnh/Video/Tài liệu... tuy có màu riêng nhưng chỉ là sợi chỉ mảnh vì dung lượng nhỏ. -->
+    <color name="category_apps">#26C6DA</color>
+    <color name="category_system">#8D6E63</color>
+    <color name="storage_track_bg">#3A3F47</color>
+
+    <!-- Nền phụ / card kiểu hệ thống -->
+    <color name="card_surface">#F5F9FF</color>
+    <color name="divider">#E5EBF5</color>
+    <color name="storage_bar_track">#E5EBF5</color>
+    <color name="icon_default">#1F2937</color>
+
+    <!-- Pill dung lượng ở màn Home: đồng nhất 1 màu xanh cho cả Bộ nhớ trong lẫn Thẻ nhớ SD
+         (trước đây 2 màu khác nhau — xanh sáng vs xanh navy đậm — khiến "màu xanh = đã dùng"
+         không nhất quán giữa các hàng, người dùng phải nhớ 2 tông khác nhau cho cùng 1 ý nghĩa). -->
+    <color name="storage_pill_internal">@color/pastel_blue_500</color>
+    <color name="storage_pill_sd">@color/pastel_blue_500</color>
+    <color name="storage_pill_text">#FFFFFF</color>
+</resources>
