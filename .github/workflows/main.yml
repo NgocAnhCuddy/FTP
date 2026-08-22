@@ -1,0 +1,51 @@
+name: Build & Sign Release APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # Giải mã keystore từ secret base64 thành file .keystore thật, dùng cho bước ký ở dưới.
+      # Secret RELEASE_KEYSTORE_BASE64 được tạo bằng: base64 -w 0 myfile-release.keystore
+      - name: Decode keystore
+        run: echo "${{ secrets.RELEASE_KEYSTORE_BASE64 }}" | base64 -d > release.keystore
+
+      # build.gradle.kts đọc signingConfig qua các biến môi trường này (xem signingConfigs
+      # trong app/build.gradle.kts) — có đủ 4 biến thì bản release sẽ được ký ngay lúc build,
+      # không cần ký thủ công bằng Termux/uber-apk-signer nữa.
+      - name: Build release APK (signed)
+        env:
+          RELEASE_STORE_FILE: ${{ github.workspace }}/release.keystore
+          RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+        run: ./gradlew assembleRelease --stacktrace
+
+      # Xoá keystore khỏi runner ngay sau khi build xong — không để lại trên máy ảo CI dù nó
+      # bị huỷ sau mỗi lần chạy, phòng trường hợp log/artifact bị lộ ra ngoài ý muốn.
+      - name: Remove keystore file
+        if: always()
+        run: rm -f release.keystore
+
+      - name: Upload signed APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-signed
+          path: app/build/outputs/apk/release/*.apk
